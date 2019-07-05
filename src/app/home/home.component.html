@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <button class="navbar-toggler bg-light"  type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> <a class="navbar-brand" style="color: white" href="#">ZOMATO</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <form class="form-inline my-2 my-lg-0 center">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search location " [(ngModel)]="input"
+          name="location" aria-label="Search" style="text-align:center">
+        <button style="margin: auto" class="btn btn-outline-success bg-light my-2 my-sm-0" (click)='kya()'
+          type="submit">Get restaurant</button>
+      </form>
+
+      <form class="form-inline my-2 my-lg-0 center">
+        <input class="form-control mr-sm-2" style="text-align:center" type="search" placeholder="Search restaurant"
+          [disabled]="restrict" [routerLink]="['/search-view']" aria-label="Search">
+
+      </form>
+    </div>
+  </nav>
+
+
+
+
+  <div class="row mx-auto pad">
+
+    <div *ngFor="let rest of rests" class="padcard">
+      
+      <div class="mx-auto border border-dark mb-3 card " style="max-width: 540px;"
+        *ngIf="rest.restaurant.featured_image">
+        <div *ngIf="rests?.length > 0">
+          <div class="row no-gutters padcard" *ngIf="rest.restaurant.featured_image">
+            <div class="col-md-5" style="padding:6px">
+              <img *ngIf="rest.restaurant.featured_image" src={{rest.restaurant.featured_image}} class="card-img "
+                alt="...">
+            </div>
+            <div class="col-md-7" *ngIf="rest.restaurant.featured_image">
+              <div class="card-body">
+                <h5 class="card-title text">{{rest.restaurant.name}}</h5>
+                <li class="card">{{rest.restaurant.cuisines}}</li>
+                <li class="card">average cost for two Rs.{{rest.restaurant.average_cost_for_two}}</li>
+                <li class="card">rating {{rest.restaurant.user_rating.aggregate_rating}}</li>
+                <a [routerLink]="['/rest-view',rest.restaurant.R.res_id]" class="btn-sm ">View restaurant</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="mx-auto" *ngIf="result">
+      <div class="mx-auto" *ngIf="!array?.length > 0 && !array.length>0">
+        <p >No result found</p>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+

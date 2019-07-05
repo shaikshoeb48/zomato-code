@@ -1,0 +1,20 @@
+
+agm-map{
+  height: 200px;
+  padding: 10px;
+  border: lightblue
+}
+.pad{
+padding: 10px
+}
+.img_pad{
+  padding: 5px;
+  padding: top 2px;
+}
+.row_pad{
+  padding: 10px;
+  padding-top: 2px 
+}
+.con_pad{
+  padding-top:5px
+}

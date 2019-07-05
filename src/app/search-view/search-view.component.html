@@ -1,0 +1,58 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-light bg-primary ">
+    <form class="form-inline center">
+      <input class="form-control mr-sm-2" appAutofocus [(ngModel)]="check" name="alpha" type="search" placeholder="Search restaurant"
+        aria-label="Search" style="text-align:center">
+      <button style="margin: auto;" class="btn btn-outline-success bg-light my-2 my-sm-0" (click)='some()' type="submit">Search</button>
+    </form>
+  </nav>
+
+
+
+  <div class="row mx-auto pad ">
+      <div *ngFor="let sear of searched" class="padcard">
+        <div *ngIf="sear.restaurant.featured_image" class="mx-auto border border-dark mb-3 card "
+          style="max-width: 540px;">
+          <div class="row no-gutters padcard" *ngIf="searched?.length > 0">
+            <div class="col-md-5">
+               
+              <img *ngIf="sear.restaurant.featured_image" style="padding:6px" src={{sear.restaurant.featured_image}} class="card-img"
+                alt="...">
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h5 class="card-title" style="color:brown">{{sear.restaurant.name}} </h5>
+                <li class="card">{{sear.restaurant.cuisines}}</li>
+                <li class="card">average cost for two Rs.{{sear.restaurant.average_cost_for_two}}</li>
+                <li class="card">rating {{sear.restaurant.user_rating.aggregate_rating}}</li>
+                <li class="card">Location : {{sear.restaurant.location.address}}</li>
+                <a [routerLink]="['/rest-view',sear.restaurant.R.res_id]" >View restaurant</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+
+
+    <div class="row">
+        <div class="mx-auto" *ngIf="result">
+          <div  class="mx-auto" *ngIf="!array?.length > 0">
+             <p style="color: red">No result found</p>
+          </div>
+       </div>
+     </div>
+        
+  
+
+</div>
+
+
+
+
+
+
+
+
